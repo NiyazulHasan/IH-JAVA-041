@@ -1,0 +1,722 @@
+Abstract class
+===============
+Abstract class is a collection of zero or more abstract methods and concrete methods.
+
+A "abstract" keyword is applicable for methods and classes but not for variables.
+
+It is not possible to create object for abstract class.
+
+By default every abstract method is a public and abstract.
+ex:
+	void m1();
+
+A concrete method is a non-abstract method.
+ex:
+	void m1()
+	{
+	}
+
+To write the implementation of abstract methods we will use sub classes.
+
+Abstract class contains instance variables.
+
+syntax:
+------
+	abstract class <class_name>
+	{
+		-
+		- //abstract methods 		
+		- //concrete methods 
+		- //instance variables 
+		-
+	}
+
+If we know partial implementation then we need to use abstract class.
+
+ex:
+---
+abstract class Person
+{
+	//abstract method 
+	public abstract void hostel();
+	
+	//concrete method 
+	public void course()
+	{
+		System.out.println("Java-Course");
+	}
+}
+class Student extends Person
+{
+	public void hostel()
+	{
+		System.out.println("Ameerpet-Hostel");
+	}
+}
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		Student s=new Student();
+		s.hostel();
+		s.course();
+	}
+}
+
+ex:
+---
+abstract class Plan 
+{
+	//instance variable
+	protected double rate;
+	
+	//abstract method 
+	public abstract void getRate();
+	
+	//concrete method 
+	public void calculateBillAmt(int units)
+	{
+		System.out.println("Total Units :"+units);
+		System.out.println("Total Bill :"+(units*rate));
+	}
+}
+class DomesticPlan extends Plan 
+{
+	public void getRate()
+	{
+		rate=2.5d;
+	}
+}
+class CommercialPlan extends Plan 
+{
+	public void getRate()
+	{
+		rate=5.0d;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		DomesticPlan dp=new DomesticPlan();
+		dp.getRate();
+		dp.calculateBillAmt(250);
+		
+		CommercialPlan cp=new CommercialPlan();
+		cp.getRate();
+		cp.calculateBillAmt(250);
+	}
+}
+
+Q) What is the difference between interface and abstract class?
+
+interface					abstract class
+------------------				------------------
+To declare interface we will use interface 	To declare abstract class we will use abstract 
+keyword.					keyword.
+
+It is a collection of abstract methods,		It is a collection of abstract methods and 
+default methods and static methods.		concrete methods.
+
+It contains constants.				It contains instance variables.
+
+We can achieve multiple inheritance.		We can't achieve multiple inheritance.
+
+It does not allow constructor.			It allows constructor.
+
+We can't declare blocks.			We can declare blocks.
+
+If we know only specification then we need 	If we know partial implementation then we need to 
+to use interface.				use abstract class.
+
+
+Enum 
+=====
+Enum concept introduced in Java 1.5.
+
+Enum is a group of named constants.
+
+Using enum we can create our own datatype called enumerated datatype.
+
+When compare to old language enum , java enum is more powerful.
+
+To a declare a enum we will use enum keyword.
+
+ex:
+	enum  <type_name>
+	{
+		VAL1,VAL2,....,VALN
+	}
+
+ex:
+	enum Months
+	{
+		JAN,FEB,MAR
+	}
+
+Internal implementation of enum
+-------------------------------
+Every enum internally consider as class concept and it extends with java.lang.Enum class.
+
+Every enum constant is a reference variable of enum type.
+
+ex:
+
+enum Months			public final class Months extends java.lang.Enum 
+{				{
+	JAN,FEB,MAR  ===>		public static final Months JAN=new Months();
+}					public static final Months FEB=new Months();
+					public static final Months MAR=new Months();
+				}
+
+Declaration and usage of enum
+------------------------------
+enum Months
+{
+	JAN,FEB,MAR
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Months m = Months.JAN;
+		System.out.println(m);// JAN 
+	}
+}
+
+From Java 1.5 version onwards it is possible to pass enum in a switch case.
+
+ex:
+---
+enum Months
+{
+	JAN,FEB,MAR
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Months m = Months.FEB;
+		switch(m)
+		{
+			case JAN: System.out.println("January"); break;
+			case FEB: System.out.println("February"); break;
+			case MAR: System.out.println("March"); break;
+		}
+	}
+}
+
+
+java.lang.Enum 
+---------------
+The power to enum will be inherited from java.lang.Enum class.
+
+It contains following two methods.
+
+1) values() 
+----------
+	This static method is used to return group of constants from enum.
+
+2) ordinal() 
+----------
+	It is used to return ordinal number of enum constant.
+
+
+ex:
+---
+enum Months
+{
+	JAN,FEB,MAR	
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Months[] m=Months.values();
+		
+		for(Months m1:m)
+		{
+			System.out.println(m1+" ----------- "+m1.ordinal());	
+		}
+	}
+}
+
+When compare to old language enum , java enum is more powerful because in addition to constants we can declare variables , methods and constructors.
+
+ex:
+---
+enum Drinks
+{
+	COKE,PEPSI,CAMPA;
+	
+	Drinks()
+	{
+		System.out.println("constructor");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Drinks d=Drinks.PEPSI;
+	}
+}
+
+ex
+---
+enum Week
+{
+	MON,TUE,WED,THU,FRI,SAT,SUN;
+	
+	static int i=10;
+	
+	public static void main(String[] args)
+	{
+		System.out.println(i);
+	}
+}
+
+API 
+=====
+API stands for Application Programming Interface.
+
+It is a base for the programmer to develop software applications.
+
+It is a collection of packages.
+
+It is divided into three types.
+
+1) predefined API 
+-----------------
+	Built-In API is called predefined API.
+	ex:
+		https://docs.oracle.com/javase/8/docs/api/
+
+2) Userdefined API 
+------------------
+	API which is created by the user based on the application requirement.
+
+3) Third party API 
+----------------
+	API which is given by third party vendor.
+	ex:
+		JavaZoom API 
+		iText API 
+		and etc.
+
+
+Packages
+=========
+A package is a collection of classes , interfaces , enums and annotations.
+
+Here enum is a special class and annotation is a special interface.
+
+In general, a package is a collection of classes and interface.
+
+A package is also known as folder or a directory.
+
+In java packages are divided into two types.
+
+1) Predefined packages
+
+2) Userdefined packages 
+
+1) Predefined packages
+-------------------
+Built-In packages are called predefined packages.
+ex:
+	java.lang
+	java.io
+	java.util
+	java.util.stream
+	java.sql
+	javax.servlet 
+	and etc.
+
+2) Userdefined packages 
+------------------------
+A package which is created by the user based on the application requirement is called userdefined package.
+
+To declare a userdefined package we need to use "package" keyword.
+
+It is always recommanded to declare a package name in the reverse order of url.
+
+syntax:
+		package  <package_name>;
+	
+ex:
+		package   com.google.www; 
+
+ex:
+---
+package com.ihub.www;
+import java.util.Calendar;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Calendar c=Calendar.getInstance();	
+		int h=c.get(Calendar.HOUR_OF_DAY);
+		
+		if(h<12)
+			System.out.println("Good Morning");
+		else if(h<16)
+			System.out.println("Good Afternoon");
+		else if(h<20)
+			System.out.println("Good Evening");
+		else
+			System.out.println("Good Night");
+	}
+}
+
+We can compile above program by using below command.
+ex:
+		current directory 
+		      |
+	javac    -d   .    Test.java
+		 |
+	destination folder 
+
+We can run above program by using below command.
+ex:
+	java     com.ihub.www.Test
+			|
+		packagename  
+
+Wrapper classes
+===============
+The main objective of wrapper classes are.
+
+1) To wrap primitive to wrapper objects and vice versa.
+
+2) To defined several utility methods. 
+
+ex:
+	primitive type 			wrapper class
+	--------------			-------------
+	byte				Byte
+	short				Short		
+	int				Integer
+	long				Long
+	float				Float
+	double 				Double
+	boolean				Boolean 
+	char 				Character 
+
+constructor
+-------------
+Every wrapper class contains following two constructors. One will take corresponding primitive as an argument and another will take corresponding String as an argument.
+
+ex:
+	wrapper class			constructor
+	-----------			-----------
+	Byte				byte or String
+	Short				short or String
+	Integer				int or String
+	Long				long or String 
+	Float				float or String 
+	Double				double or String 
+	Boolean				boolean or String 
+	Character 			char 
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Integer i1=new Integer(10);
+		System.out.println(i1); // 10
+		
+		Integer i2=new Integer("20");
+		System.out.println(i2); // 20
+	}
+}
+
+ex
+----
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Boolean b1=new Boolean(true);
+		System.out.println(b1); //true 
+		
+		Boolean b2=new Boolean("false");
+		System.out.println(b2); //false
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Character c=new Character('a');
+		System.out.println(c);
+	}
+}
+
+Utility methods
+==============
+
+1) valueOf()
+-------------
+It is similar to constructor.
+It is used to convert primitive type to wrapper object.
+ex:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Integer i1=Integer.valueOf(10);
+		System.out.println(i1);//10
+		
+		Long l1=Long.valueOf("20");
+		System.out.println(l1);
+	}
+}
+
+2) xxxValue() method
+---------------------
+It is used to convert wrapper object to primitive type .
+
+ex:
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Integer i=new Integer(10);
+		
+		byte b=i.byteValue();
+		System.out.println(b);//10
+		
+		short s=i.shortValue();
+		System.out.println(s);//10
+	}
+}
+
+
+3) parseXxx()
+------------
+It is used to convert String to primitive type.
+
+ex:
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str="12";
+		
+		int i=Integer.parseInt(str);
+		System.out.println(i); // 12
+		
+		long l=Long.parseLong(str);
+		System.out.println(l); // 12
+		
+		float f=Float.parseFloat(str);
+		System.out.println(f); // 12.0
+	}
+}
+
+
+4) toString()
+------------
+It is used to convert wrapper object to string type.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Integer i1=new Integer(10);
+		
+		String str = i1.toString();
+		
+		System.out.println(str); // 10
+	}
+}
+
+Interview Question
+------------------
+
+Q) Write a java program to perform sum of two binary numbers?
+
+input:
+	1010
+	0101
+output:
+	1111
+
+ex:
+--
+import java.util.Scanner;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the first binary number : ");
+		String binary1=sc.next();  // 1010
+		
+		System.out.println("Enter the second binary number : ");
+		String binary2=sc.next();  // 0101
+		
+		//convert binary to decimal
+		int a = Integer.parseInt(binary1,2);
+		int b = Integer.parseInt(binary2,2);
+		
+		int c = a+b;
+		
+		//convert decimal to binary 
+		String result=Integer.toBinaryString(c);
+		
+		System.out.println(result);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

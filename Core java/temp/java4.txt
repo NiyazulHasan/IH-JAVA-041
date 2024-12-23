@@ -1,0 +1,149 @@
+Comments in Java
+================
+Comments are created for documentation purpose.
+
+Comments are used to improve readability of our code.
+
+It is highly recommanded to use comments in regular programming.
+
+Diagram : java4.1
+
+Comments will not display in output because they won't compiled by the compiler.
+
+In java, we have two types of comments.
+
+1) Single line comment 
+--------------------
+	It is used to comment a single line.
+	ex:
+		// comment here 
+
+
+2) Multiple line comment 
+------------------------
+	It is used to comment multiple lines.
+	ex:
+		/*
+			-
+			- comment here 
+			-
+		*/
+
+ex:
+---
+//class declaration 
+class Test
+{
+
+	//main method	
+	public static void main(String[] args)
+	{
+
+		//variable declaration 
+		int sum=0;
+
+		//sum of 10 natural numbers logic
+		for(int i=1;i<=10;i++)
+		{
+			sum+=i;
+		}
+
+		//display the result
+		System.out.println(sum);
+	}
+}
+
+Interview Questions
+====================
+
+Q) How many modules are there in java?
+
+There are three modules in java.
+
+1) JSE/J2SE (Java Standard Edition)
+
+2) JEE/J2EE (Java Enterprise Edition)
+
+3) JME/J2ME (Java Micro Edition)
+
+
+Q) What is the difference between JDK, JRE and JVM ?
+
+JDK 
+----
+JDK stands for Java Development Kit.
+
+It is a installable software which consist Java Runtime Environment (JRE), Java Virtual Machine (JVM),
+compiler (javac) , interpreter (java), an archiever (.jar) , document generator (javadoc) and other tools needed for java application development.
+
+JRE
+----
+JRE stands for Java Runtime Environment.
+It provides very good environment to run java applications only.
+
+JVM
+----
+JVM stands for Java Virtual Machine.
+JVM is an interpreter which is used to execute our program line by line procedure.
+
+
+Diagram: java4.2
+
+Q) Java is a platform dependent or independent?
+
+	Java is a platform independent.
+
+	Diagram: java4.3
+
+
+Q) JVM is platform dependent or independent?
+
+	JVM is platform dependent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

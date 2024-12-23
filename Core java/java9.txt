@@ -1,0 +1,441 @@
+Identifiers
+============
+A name in java is called identifier.
+
+It can be class name, variable name, method name or label name.
+
+ex:
+	class  Test
+	{
+		public static void main(String[] args)
+		{
+			int  x = 10;
+
+			System.out.println(x); 	
+		}
+	}
+
+	Here Test, main, args and x are identifiers.
+
+
+Rules to declare an identifiers
+-------------------------------
+Rule1:
+-----
+	Identifier will accept following characters.
+	ex:
+		A-Z
+		a-z
+		0-9
+		_
+		$
+
+Rule2:
+------
+	If we take other characters then we will get compile time error.
+	ex:
+		int  emp_id;   //valid 
+		int  emp$alary;  //valid 
+		int  emp#id;    //invalid 
+
+Rule3:
+------
+	Identifier must and should starts with alphabet, underscore or dollar symbol but not with 
+	digits.
+	ex:
+		int  a1234;  //valid 
+		int  _abcd;  //valid 
+		int  $=20;   //valid 
+		int  1abcd;  //invalid 
+
+Rule4:
+-----
+	Every identifier is a case sensitive.
+	ex:
+		int num;
+		int NUM;
+		int NuM;
+
+Rule5:
+------
+	We can't take reserved words as an identifier name.
+	ex:
+		int  if; //invalid 
+		int  else; //invalid
+
+Rule6:
+------
+	There is no length limit for an identifier but it is not recommanded to take more then 
+	15 characters.
+
+Reserved Words
+===============
+There are some identifiers which are reserved to associate some funtionality or meaning such type of identifiers are called reserved words.
+
+Java supports 53 reserved words and It is classified into two types.	
+
+Diagram: java9.1
+
+
+Used keywords with respect to class
+-------------------------------------
+import
+package
+class
+interface
+enum
+extends
+implements
+
+Used keywords with respect to object
+-----------------------------------
+new 
+instanceof
+this
+super
+
+Used keywords with respect to datatype
+--------------------------------------
+byte
+short
+int
+long
+float
+double
+boolean
+char 
+
+Used keywords with respect to returntype
+-------------------
+void 
+
+Used keywords with respect to modifiers
+-----------------------------------
+default
+public
+private
+protected
+abstract
+static
+final 
+synchronized
+strictfp
+transient
+volatile 
+native 
+
+Used keywords with respect to flow control
+------------------------------------------
+if
+else
+do
+while
+switch
+case 
+break
+continue
+for 
+
+Used keywords with respect to exception handling
+--------------------------
+try
+catch
+throw
+throws
+finally
+assert 
+
+
+Datatypes
+=========
+Datatype describes what type of value we want to store inside a variable.
+
+Datatype also tells how much memory has to be created for a variable.
+
+In java, datatypes are divided into two types.
+
+Diagram: java9.2
+
+
+byte
+----
+It is a smallest datatype in java.
+
+size : 1 byte (8 bits)
+
+Range : -128 to 127 (-2^7 to 2^7-1)
+
+ex:
+
+	1) byte b=10;
+	   System.out.println(b); // 10
+
+	2) byte b=130;
+	   System.out.println(b); // C.T.E 
+
+	3) byte b=10.5;
+	   System.out.println(b); // C.T.E 
+
+
+short
+------
+It is a rarely used datatype in java.
+
+Size : 2 bytes (16 bits)
+
+Range : -32768 to 32767 (-2^15 to 2^15-1)
+
+ex:
+	1) byte b=20;
+	   short s=b;
+           System.out.println(s); // 20
+
+	2) short s="hi";
+	   System.out.println(s); // C.T.E 
+
+	3) short s=true;
+           System.out.println(s); // C.T.E 
+
+
+int
+-----
+It is mostly used datatype in java.
+
+Size : 4 bytes (32 bits)
+
+Range : -2147483648 to 2147483647 (-2^31 to 2^31-1)
+
+ex:
+	1) int i=10.5;
+	   System.out.println(i);  // C.T.E 
+
+	2) int i="true";
+	   System.out.println(i); // C.T.E 
+
+	3) int i=false;
+	   System.out.println(i); // C.T.E 
+
+	4) int i='a';
+	   System.out.println(i); // 97
+
+Note:
+------
+In java, every character contains universal unicode value.
+ex:
+	a - 97 
+	A - 65 
+
+
+long 
+-----
+If int datatype is not enough to hold large value then we need to use long datatype.
+
+Size: 8 bytes (64 bits)
+
+Range: (-2^63 to 2^63-1)
+
+ex:
+	1) long l=10.5;
+	   System.out.prntln(l); // C.T.E 
+
+	2) long l="hi";
+	   System.out.println(l); // C.T.E 
+
+	3) long l=true;
+	   System.out.println(l); // C.T.E 
+	
+	4) long l='A';
+	   System.out.println(l); // 65 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+Import statement
+================
+Whenever we use import statement we should not use fully qualified name.
+
+Using short name also we can achieve.
+
+We have three types of import statements.
+
+1) Explicit class import 
+
+2) Implicit class import 
+
+3) Static import
+
+1) Explicit class import
+-------------------------
+This type of import statement is highly recommanded to use because it improves readability of our code.
+
+ex:
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

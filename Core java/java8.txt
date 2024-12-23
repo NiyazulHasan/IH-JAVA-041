@@ -1,0 +1,42 @@
+Features in Java
+=================
+We have following important features in java.
+
+1) Simple 
+
+2) Platform independent 
+
+3) Object oriented 
+
+4) Architecture Neutral 
+
+5) Multithreaded 
+
+6) High performance
+
+7) Portable 
+
+8) Robust 
+
+9) Highly secured 
+
+10) Distributed  
+
+11) Dynamic 
+
+and etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

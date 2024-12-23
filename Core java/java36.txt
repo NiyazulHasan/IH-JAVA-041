@@ -1,0 +1,704 @@
+StringBuilder
+==============
+StringBuilder is exactly same as StringBuffer with following differences.
+
+StringBuffer					StringBuilder
+---------------					--------------
+All the methods present in StringBuffer are 	No method present in StringBuidler is synchronized.
+synchronized.
+
+At a time only one thread is allowed to operate	Multiple threads are allowed to operate on 
+on StringBuffer object. Hence StringBuffer is 	StringBuilder object. Hence StringBuilder is not 
+thread safe.					thread safe.
+
+Waiting time of a thread will increase		There is no waiting threads relatively performance 
+relatively performance is low.			is high.
+
+It is introduced in 1.0v.			It is introduced in 1.5v.
+
+
+
+Q) Write a java program to display reverse of a given number?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n=sc.nextInt();
+
+		//convert number to string and store in StringBuilder
+		StringBuilder sb=new StringBuilder(Integer.toString(n));
+		
+		String rev=sb.reverse().toString();
+
+		System.out.println(rev);			
+	}
+}
+
+Note:
+-----
+If our content not change frequently then it is recommanded to use String.
+
+If our content change frequently where thread safety is required then we need to use StringBuffer.
+
+If our content change frequently where thread safety is not required then we need to use StringBuilder.
+
+
+StringTokenizer 
+================
+It is a class which is present in java.util package.
+
+It is used to tokenize the string for processing.
+
+We can create StringTokenizer object as follow.
+
+ex:
+	StringTokenizer st=new StringTokenizer(String str,RegularExpression regex);
+
+StringTokenizer class contains following methods.
+ex:
+	public boolean hasMoreTokens()
+	public String nextToken()
+	public boolean hasMoreElements()
+	public Object nextElement()
+	public int countTokens()	
+
+ex
+---
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st=new StringTokenizer("this is java class");
+
+		System.out.println(st.countTokens());
+
+	}
+}
+Note:
+	space is a default regular expression. 
+
+
+ex:
+---
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st=new StringTokenizer("this is java class");
+
+		while(st.hasMoreTokens())
+		{
+			String s=st.nextToken();
+			System.out.println(s);
+		}
+
+	}
+}
+
+ex:
+---
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st=new StringTokenizer("this is java class"," ");
+
+		while(st.hasMoreElements())
+		{
+			String s=(String)st.nextElement();
+			System.out.println(s);
+		}
+
+	}
+}
+
+ex:
+---
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st=new StringTokenizer("9,99,999",",");
+
+		while(st.hasMoreElements())
+		{
+			String s=(String)st.nextElement();
+			System.out.println(s);
+		}
+
+	}
+}
+
+
+Exception Handling 
+==================
+
+Q) What is the difference between Exception and Error?
+
+Exception
+---------
+	Exception is a problem for which we can provide solution programmatically.
+	Exception will occur due to syntax errors.
+	ex:
+		FileNotFoundException 
+		ArithmeticException 
+		IllegalArgumentException 
+Error
+------
+	Error is a problem for which we can't provide solution programmatically.
+	Error will occur to lack of system resources.
+	ex:
+		OutOfMemoryError 
+		StackOverFlowError
+		LinkageError 
+		
+
+Q) Types of Errors in java?
+
+We have three types of errors.
+
+1) Logical Error 
+
+2) Compile time Error 
+
+3) Runtime Error (exception)		
+	
+As a part of java application development it is a responsibility of a programmer to provide smooth termination for every java program.
+
+We have two types of terminations.
+
+1) Smooth termination / Graceful termination 
+
+2) Abnormal termination 
+
+1) Smooth termination
+----------------------
+During the program execution suppose if we are not getting any interruption in the middle of the program such type of termination is called smooth termination.
+
+ex:
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("Hello World");
+	}
+}
+
+2) Abnormal termination 
+-------------------------
+During the program execution suppose if we are getting some interruption in the middle of the program such type of termination is called abnormal termination.
+
+ex:
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(10/0); // R.E ArithmeticException:
+	}
+}
+
+If any exception raised in our program we must and should handle that exception otherwise our program will terminates abnormally.
+
+Here exception will display name of the exception, description the exception and line number of the exception.
+
+
+Exception 
+==========
+Exception is a unwanted , unexpected event which disturbs normal flow of our program.
+
+Exception always raised at runtime so they are also known as runtime events.
+
+The main objective of exception handling is to provide graceful termination.
+
+In java, exceptions are divided into two types.
+
+1) Predefined exceptions 
+
+2) Userdefined exceptions 
+
+
+1) Predefined exceptions 
+-----------------------
+Built-In exceptions are called predefined exceptions.
+
+They are classified into two types.
+
+Diagram: java36.1
+
+i) Checked exceptions 
+---------------------
+Exceptions which are checked by the compiler at the time of compilation are called checked exceptions.
+ex:
+	IOException 
+	InterruptedException 
+	FileNotFoundException 	
+
+
+ii) Unchecked exceptions 
+------------------------
+Exceptions which are checked by the JVM at the time of runtime are called unchecked exceptions.
+ex:
+	ArithmeticException 
+	IllegalArgumentException 
+	ClassCastException 
+
+
+If any checked exception raised in our program we must and should handle that exception by using try and catch block.
+
+try block
+=========
+It is a block which contains risky code.
+
+It is associate with catch block.
+
+If any exception raised in try block then try block won't be executed.
+
+It is used to throw the exception to catch block.
+
+
+catch block
+===========
+It is a block which contains error handing code.
+
+It is always associate with try block.
+
+It is used to catch the exception which is thrown by try block.
+
+If there is no exception in try block then catch block won't be executed.
+
+A catch block will take exception name as a parameter and that name must match with exception class name.
+
+syntax:
+------
+	try
+	{
+		-
+		- //risky code 
+		- 
+	}
+	catch(Exception e)
+	{	
+		-
+		- //error handling code 
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println("try-block");
+		}
+		catch (Exception e)
+		{
+			System.out.println("catch-block");
+		}
+	}
+}
+o/p:
+	try-block
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println(10/0);
+		}
+		catch (ArithmeticException ae)
+		{
+			System.out.println("catch-block");
+		}
+	}
+}
+o/p:
+	catch-block
+
+
+ex
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println("stmt1");
+			System.out.println(10/0);
+			System.out.println("stmt2");
+		}
+		catch (ArithmeticException ae)
+		{
+			System.out.println("catch-block");
+		}
+	}
+}
+output:
+	stmt1
+	catch-block 
+
+A try with multiple catch blocks
+================================
+A try block can have multiple catch blocks.
+
+If a try block contains multiple catch blocks then order of catch block is very important. It should be from child to parent but not from parent to child.
+
+ex:
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println(10/0);
+		}
+		catch (ArithmeticException ae)
+		{
+			System.out.println("from AE");
+		}
+		catch (RuntimeException re)
+		{
+			System.out.println("from RE");
+		}
+		catch (Exception e)
+		{
+			System.out.println("from E");
+		}
+	}
+}
+
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			int[] arr=null;
+			System.out.println(arr[0]);
+		}
+		catch (ArithmeticException ae)
+		{
+			System.out.println("from AE");
+		}
+		catch (RuntimeException re)
+		{
+			System.out.println("from RE");
+		}
+		catch (Exception e)
+		{
+			System.out.println("from E");
+		}
+	}
+}
+
+ex:
+--
+import java.io.File;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			File f=new File("C:\\abc.txt");
+			f.createNewFile();
+		}
+		catch (ArithmeticException ae)
+		{
+			System.out.println("from AE");
+		}
+		catch (RuntimeException re)
+		{
+			System.out.println("from RE");
+		}
+		catch (Exception e)
+		{
+			System.out.println("from E");
+		}
+	}
+}
+
+Various methods to display exception details
+============================================
+Throwable defines following three methods to display exception details.
+
+1) printStackTrace() 
+-------------------
+It will display name of the exception , description of the exception and line number of the exception.
+
+2) toString()
+-----------
+It will display name of the exception and description of the exception.
+
+3) getMessage()
+------------
+It will display description of the exception.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println(10/0);
+		}
+		catch (ArithmeticException ae)
+		{
+			ae.printStackTrace();
+
+			System.out.println("-----------------");
+
+			System.out.println(ae.toString());
+
+			System.out.println("-----------------");
+
+			System.out.println(ae.getMessage());
+		}
+		
+	}
+}
+
+Q) Can we handle multiple exceptions in a single catch block?
+
+Yes, we can handle multiple exceptions using single catch block.
+
+ex:
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println(10/0);
+		}
+		catch (NullPointerException | ArithmeticException | IllegalArgumentException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			int[] arr=null;
+			System.out.println(arr[0]);
+		}
+		catch (NullPointerException | ArithmeticException | IllegalArgumentException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+ex
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			Thread.currentThread().setPriority(11);
+		}
+		catch (NullPointerException | ArithmeticException | IllegalArgumentException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+finally block
+==============
+It is never recommanded to maintain cleanup code in try block because if any exception raised in try block then try block won't be executed.
+
+It is never recommanded to maintain cleanup code in catch block because if there is no exception in try block then catch block won't be executed.
+
+We need a place where we can maintain cleanup code and it should execute irrespective of exception raised or not. Such block is called finally block.
+
+Finally block always associate with try and catch block.
+
+syntax:
+----
+	try
+	{
+		-
+		- // risky code 
+		-
+	}
+	catch(Exception e)
+	{
+		-
+		- // error handling code 
+		-
+	}
+	finally
+	{
+		-
+		- // cleanup code 
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println("try-block");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+o/p:
+	try-block
+	finally-block 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println(10/0);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+o/p:
+	java.lang.ArithmeticException: / by zero
+        at Test.main(Test.java:7)
+	finally-block
+
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println("stmt1");
+			System.out.println(10/0);
+			System.out.println("stmt2");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+output:
+		stmt1
+		java.lang.ArithmeticException: / by zero
+        	at Test.main(Test.java:8)
+		finally-block
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,140 @@
+Modules in Java
+===============
+We have three modules in java.
+
+					Java Modules 
+					     |
+	|------------------------------------|--------------------------------|
+	JSE/J2SE			JEE/J2EE			JME/J2ME
+(Java Standard Edition)		(Java Enterprise Edition)	(Java Micro Edition)
+
+> Standalone app		> Distributed app 		> Mobile App
+
+> Desktop app 			> Enterprise app 
+
+> Two-tier app			> ERP app 
+
+				> N-tier app 
+
+> Standalone app
+-----------------
+A simple java program which contains main method is called standalone application.
+
+ex:
+	class Test
+	{
+		public static void main(String[] args)
+		{
+			-
+			-
+			-
+		}	
+	}
+
+
+> Desktop app 
+-------------
+It is a software application which is specially designed to perform perticular task.
+
+ex:
+	Control panel 
+	VLC media player
+	Recycle bin
+	and etc.
+
+
+> Two-tier app 
+----------------
+Having more then one tier is called two tier application.
+
+Diagram: java2.1
+Diagram: java2.2
+
+
+
+> Distributed app 
+-----------------
+Diagram: java2.3
+
+In client-Server architecture, if multiple request goes to main server then main server will 
+distribute the request it's parallel servers to reduce the burdun of main server such type of 
+application is called distributed application.
+
+
+> Enterprise app 
+----------------
+An application which deals with large business complex logic by taking the support of middle ware
+services is called enterprise application.
+
+Here middleware services means authentication, autherization, malware production, security, transaction and etc.
+
+ex:
+	Facebook 
+	Online shopping website
+
+> ERP app 
+----------
+ERP stands for Enterprise Resource Planning.
+
+ERP is used to maintain the data in a enterprise.
+
+Diagram: java2.4
+
+
+> N-tier app 
+-------------
+Having more then two tiers is called N-tier application.
+
+Diagram: java2.5
+
+
+Mobile App
+----------
+It is a software application or program which is specially designed for wireless network devices like phone, tab, cell , cellular and etc rather then laptop's and pc's.
+
+ex:
+	PubG
+	Gpay
+	templeRun 
+	and etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

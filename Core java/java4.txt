@@ -1,0 +1,173 @@
+Comments in Java
+================
+Comments are created for documentation purpose.
+
+Comments are used to improve redability of our code.
+
+It is highly recommanded to use comments in regular programming.
+
+Diagram: java4.1
+
+Comments will not display in output because they won't compiled by the compiler.
+
+In java, comments are divided into two types.
+
+1) Single Line Comment 
+
+2) Multiple Line Comment 
+
+
+1) Single Line Comment 
+----------------------
+It is used to comment a single line.
+ex:
+	// comment here 
+
+
+2) Multiple Line Comment 
+-------------------------
+It is used to comment multiple lines.
+ex:
+	/*
+		-
+		- comment here 
+		-
+	*/
+
+ex:
+----
+
+//class declaration 
+class Example
+{
+	//main method 
+	public static void main(String[] args)
+	{
+
+		//variable declaration 
+		int n=123;
+
+		//sum of digits logic 
+		int rem,sum=0;
+		while(n!=0)
+		{
+			rem=n%10;
+			sum=sum+rem;
+			n=n/10;			
+		}	
+		
+		//output stmt
+		System.out.println(sum);
+	}
+}
+
+Interview Questions
+===================
+
+Q) What is Java?
+
+Java is a object oriented, platform independent, case sensitive , strongly typed checking, high level, open source programming language developed by James Gosling in the year of 1995.
+
+or
+
+Java is a versatile programming language which is used to develop various types of applications like standalone application, desktop application, distributed application, enterprise application, ERP application, networking application,mobile application and etc. 
+
+
+
+
+Q) Java is platform independent or dependent?
+
+   Java is a platform independent.
+
+   Diagram: java4.2
+
+
+
+Q) JVM is platform independent or dependent?
+
+   JVM is platform dependent.  
+
+
+
+
+
+Q) What is difference between JDK, JRE and JVM?
+
+
+JDK
+-----
+JDK stands for Java Development Kit.
+
+JDK is a installable software which consist Java Runtime Environment (JRE), Java Virtual Machine (JVM), compiler (javac) , interpreter (java), an archiever (.jar) , document generator (javadoc) and other tools needed for java application development.
+
+JRE
+----
+JRE stands for Java Runtime Environment.
+JRE provides very good environment to run java applications only.
+
+JVM
+----
+JVM stands for Java Virtual Machine.
+JVM is an interpreter which is used to execute our program line by line procedure.
+
+
+Diagram: java4.3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+Internal Architecture of JVM
+===========================
+Diagram: java7.1
+
+Java program contains java code instructions.Once if we compile, java code instructions convert to byte code instructions in .class file.
+
+JVM will invoke one module called classloader or subsystem to load all the byte code instructions from .class file. The work of classloader is to check these byte code instructions are proper or not.
+If they are not property it will refuse the execution.If they are property then it will allocates the memory.
+
+We have five memories in java.
+
+1) Method Area 
+-------------
+Method area contains code of a class, code of a variable and code of a method.
+
+2) Heap
+--------
+Our object creations will store in heap area.
+
+
+3) Java Stack 
+---------------
+Java methods execute in method area but to execute those methods we required some memory and that 
+memory will be allocated in java stack.
+
+
+4) PC Register 
+--------------
+It is a program counter register which is used to track address of an instructions.
+
+
+5) Native method stack 
+------------------------
+Java methods execute in method area.
+Similarly native methods execute in native method stack.
+But native methods we can't execute directly we required a program called Native method interface.
+
+Execution Engine
+------------------
+Executione engine contains interpreter and JIT compiler.
+
+Whenever JVM loads byte code instructions from .class file , it uses interpreter and JIT compiler simultenously.
+
+Interpreter is used to execute our program line by line procedure.
+
+JIT compiler is used to increase the execution speed of our program.
+
+Finally , JVM converts byte code to machine code.
+
+Interview Questions
+==================
+Q) What is native method in java?
+
+A method which is developed by using some other language is called native method.
+
+
+
+
+Q) How many memories are there in java?
+
+We have five memories in java.
+
+1) Method area
+2) Heap
+3) Java Stack 
+4) PC Register 
+5) Native method Stack 
+
+
+
+
+Q) What is JIT compiler?
+
+It is a part of a JVM which is used to increase the execution speed of our program.
+
+
+
+
+Q) How many classloaders are there in java?
+
+We have three predefined classloader in java.
+
+1) Bootstrap classloader 
+
+2) Extension classloader
+
+3) Applicaiton/System classloader
+
+
+
+
+
+
+
+
+
+
+

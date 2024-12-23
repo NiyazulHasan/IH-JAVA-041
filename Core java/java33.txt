@@ -1,0 +1,531 @@
+Inner classes
+==============
+Sometimes we will declare a class inside another class such concept is called inner class.
+Ex:
+	class Outer
+	{
+		class Inner 
+		{
+			-
+			-		
+			-
+		}
+	}
+
+Inner classes introduced as a part of event handling to remove GUI bugs.
+
+But due to powerful features and benefits of inner classes. Programmers started to use inner classes in regular programming.
+
+In inner classes we can't declare static members.
+
+Accessing inner class data from static area of outer class
+--------------------------------------------------------
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("M1-Method");
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		Outer o=new Outer();
+
+		Outer.Inner i=o.new Inner();
+
+		i.m1();
+	}
+}
+
+If we compile above program two .class file will generated i.e Outer.class and Outer$Inner.class.
+
+ex:
+---
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("M1-Method");
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		Outer.Inner i=new Outer().new Inner();
+		i.m1();
+	}
+}
+
+ex:
+---
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("M1-Method");
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		new Outer().new Inner().m1();
+	}
+}
+
+ex:
+----
+class Outer 
+{
+	class Inner 
+	{
+		public static void m1()
+		{
+			System.out.println("M1-Method");
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		new Outer().new Inner().m1();
+	}
+}
+
+o/p:
+	C.T.E : Illegal static declaration
+
+ex:
+
+class Outer 
+{
+	class Inner 
+	{
+		static int i=10;
+
+		public void m1()
+		{
+			System.out.println(i);
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		new Outer().new Inner().m1();
+	}
+}
+
+o/p:
+	C.T.E : Illegal static declaration
+
+Accessing inner class data from non-static area of outer class
+------------------------------------------------------------
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("M1-Method");
+		}
+	}
+
+	public void m2()
+	{
+		Inner i=new Inner();
+		i.m1();
+	}
+	public static void main(String[] args)
+	{
+		Outer o=new Outer();
+		o.m2();
+	}
+}
+
+Note:
+-----
+We use inner classes to logically group classes and interfaces in one place to be more readable and maintainable. 
+
+
+Anonymous inner class
+======================
+A class which does not have any name is called anonymous. 
+
+The main objective of anonymous inner class is just for instance use.
+
+ex:
+
+interface A 
+{
+	void m1();
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		//Anonymous inner class
+		A a = new A()
+		{
+			public void m1()
+			{
+				System.out.println("M1 Method");
+			}
+		};
+		a.m1();
+	}
+}
+
+
+Types of objects 
+==================
+We have two types of objects in java.
+
+1) Immutable object 
+
+2) Mutable object 
+
+1) Immutable object 
+--------------------
+Immutable object does not allow to modify object state.
+
+After object creation we can't perform any changes. If we perform any changes then for every change a new object will be created such type of object is called immutable object.
+ex:
+	wrapper classes and String 
+
+
+2) Mutable object 
+------------------
+Mutable object allows to modify object state.
+
+After object creation we can perform any changes. All the required changes will perform in a same object such type of object is called mutable object.
+ex:
+	StringBuffer and StringBuilder 
+
+String
+======
+A String is a collection of characters which is enclosed in a double quotation.
+
+case1:
+------
+Once if we create a String object we can't perform any changes. If we perform any changes then for every change a new object will be created such behaviour is called immutability of an object.
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String s1=new String("ihub");
+
+		s1.concat("talent");
+
+		System.out.println(s1); //ihub
+	}
+}
+
+Diagram: java33.1 
+
+case2:
+-------
+Q) What is the difference between == and .equals() method?
+
+==
+---
+It is used to compare primitive types and object types.
+It is used for reference or address comparision.
+
+ex:
+	
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String s1=new String("ihub");
+
+		String s2=new String("ihub");
+
+		System.out.println(s1==s2); // false
+	}
+}
+
+.equals()
+----------
+It is used to compare object types only.
+
+It is used for content comparision. 
+
+It is a case sensitive.
+
+ex:
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String s1=new String("ihub");
+
+		String s2=new String("ihub");
+
+		System.out.println(s1.equals(s2)); // true
+	}
+}
+
+
+case3:
+-----
+Whenever we create a String object. Two objects will be created one is on heap and another is on SCP (String Constant Pool) area.But 's' always points to heap area object.
+
+Diagram: java33.2
+
+
+Object creation in SCP area is always optional.First JVM will check is there any object is created with same content or not.If it is created then JVM simply refers to that object.If it is not created then JVM create a new object.Hence there is a no chance of having duplicate objects in SCP area.
+
+Even though SCP area object do not have reference, garbage collector can't access them.
+
+SCP objects will destroy automatically whenever JVM shutdowns or terminated.
+
+Diagram: java33.3
+
+
+Interning of String object
+==========================
+With the help of heap object reference if we need corresponding SCP object reference then we need to use intern() method.
+
+Diagram: java33.4
+
+String important methods
+=========================
+
+Q) Write a java program to display length of the string?
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="ihub";
+
+		System.out.println(str.length());//4
+	}
+}
+
+Q) Write a java program to convert string to upper case ?
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="ihub";
+
+		System.out.println(str.toUpperCase());//IHUB
+	}
+}
+
+Q) Write a java program to convert string to lower case ?
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="IHUB";
+
+		System.out.println(str.toLowerCase());//ihub
+	}
+}
+
+
+Q) Write a java program to compare two strings?
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str1="ihub";
+		String str2="IHUB";
+
+		if(str1.equals(str2))
+			System.out.println("Both are equal");
+		else
+			System.out.println("Both are not equal");
+	}
+}
+
+approach2
+-----------
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str1="ihub";
+		String str2="IHUB";
+
+		if(str1.equalsIgnoreCase(str2))
+			System.out.println("Both are equal");
+		else
+			System.out.println("Both are not equal");
+	}
+}
+
+Q) Write a java program to read any character from string based on the index?
+
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="ihubtalent";
+		
+		System.out.println(str.charAt(5));//a
+	}
+}
+
+Q) Write a java program to concatinate two strings?
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="ihub";
+
+		str=str.concat("talent");
+		
+		System.out.println(str);//ihubtalent
+	}
+}
+
+
+Q) Write a java program to get the index value of a character in a given string?
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="qualitythought";
+		
+		System.out.println(str.indexOf('t'));//5
+
+		System.out.println(str.lastIndexOf('t'));//13
+		
+	}
+}
+
+
+Q) Write a java program to check given word present in a string or not?
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="this is java class";
+
+		String word="java";
+		
+		if(str.contains(word))
+			System.out.println("It is present");
+		else
+			System.out.println("It is not present");
+		
+	}
+}
+
+Q) Write a java to remove special characters from given string?
+
+input:
+	I_hub@Ta#len$t12
+
+output:
+	IhubTalent12  
+
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="I_hub@Ta#len$t12";
+
+		str=str.replaceAll("[^A-Za-z0-9]","");
+	
+		System.out.println(str);
+	}
+}
+
+Q) Write a java program to remove the spaces from given string?
+
+Input:
+	I hub Tal ent
+
+Output:
+	IhubTalent 
+
+ex:
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String str="I hub Tal ent";
+
+		str=str.replaceAll("\\s","");
+	
+		System.out.println(str);
+	}
+}
+
+
+Q) Write a java program to concatinate two strings?
+
+Input:
+	ihub12
+	talent8
+
+Output:
+	ihubtalent20
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		String s1="ihub12";
+		String s2="talent8";
+
+		String word1=s1.replaceAll("[^A-Za-z]","");
+		int num1=Integer.parseInt(s1.replaceAll("[^0-9]",""));
+
+		String word2=s2.replaceAll("[^A-Za-z]","");
+		int num2=Integer.parseInt(s2.replaceAll("[^0-9]",""));
+
+		String word=word1+word2;
+		int num = num1+num2;
+
+		System.out.println(word+num);
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

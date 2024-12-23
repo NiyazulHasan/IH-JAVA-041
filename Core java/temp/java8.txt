@@ -1,0 +1,75 @@
+History of Java
+================
+
+Java programming language was originally developed by Sun Microsystems which was initiated by James Gosling and released in 1995 as core component of Sun Microsystems' Java platform (Java 1.0 [J2SE]). History of even naming of the Java is very interesting.
+
+In 1990 , Sun Micro System took one project to develop a software called consumer electronic device which can be controlled by a remote like setup box.That time project was called Stealth project and later it is renamed to Green project.
+
+James Gosling, Mike Sheradin and Patrick Naughton were there to develop the project. They met in a place called Aspan/Colarado to start the work with Graphic System.James Gosling thought to use C and C++ languages to develop the project.But the problem what they have faced is C and C++ languages are system dependent. Then James Gosling decided why don't we create our own programming language which is system independent.
+
+In 1991, they have developed a programming language called an OAK.There was an OAk tree in front of his office. James Gosling used this name as Oak represents solidarity and Oak tree is the national tree of multiple countries like USA, France, Romania etc. But OAk technologies already had OAk as a trademark and James team had to brainstrom another title for the language.
+
+Later in 1995, they have renamed OAK to Java. Java is a island of an Indonasia where first coffee of seed was produced and during the development of project they were consuming lot of coffee's.Hence a symbol of java is a cup of coffee with saucer.
+
+
+
+Interview Questions
+--------------------
+Q) Who is the creator of java?
+
+	James Gosling 
+
+
+Q) In which year java was developed?
+
+	In 1995
+
+
+Q) Java originally known as ___ ?
+
+	OAK
+
+
+Features of Java
+================
+We have following important features in java.
+
+1) Simple 
+
+2) Platform independent 
+
+3) Object oriented 
+
+4) Highly secured 
+
+5) Architecture neutral 
+
+6) Multithreaded 
+
+7) Portable 
+
+8) Dynamic 
+
+9) Distributed 
+
+and etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

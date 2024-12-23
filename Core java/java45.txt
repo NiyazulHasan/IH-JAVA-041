@@ -1,0 +1,691 @@
+Q) When do we get NullPointerException in java?
+
+We will get NullPointerException when our code attempts to read object reference which has not been initialized.
+
+ex:
+	Test t=null;
+	System.out.println(t.i); // R.E NullPointerException 
+
+ex:
+	Test t=null;
+	t.methodOne(); // R.E NullPointerException 
+
+ex:
+	int[] arr=null;
+	System.out.println(arr[0]); // R.E NullPointerException 
+
+ex:
+	List<Integer> list=null;
+	list.add(10);  // R.E NullPointerException
+
+ex:
+	Test t=null;
+	synchronized(t)
+	{
+		-
+		-
+		-
+	}	
+	// R.E NullPointerException 
+
+To avoid NullPointerException we need to perform following things.
+
+1) Initialize objects before using them.
+
+2) Perform null checks before dereferencing objects.
+
+3) Using Optional which is having the capability to perform null checks gracefully.
+
+
+1) Initialize objects before using them
+----------------------------------------
+ex:
+	Test t=new Test();
+	System.out.println(t.i); 
+ex:
+	Test t=new Test();
+	t.methodOne();  
+
+ex:
+	int[] arr=new int[3];
+	System.out.println(arr[0]); // 0
+
+ex:
+	List<Integer> list=new ArrayList<Integer>;
+	list.add(10);  
+
+ex:
+	Test t=new Test();
+	synchronized(t)
+	{
+		-
+		-
+		-
+	}	
+	
+2) Perform null checks before dereferencing objects
+----------------------------------------------------
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Test t=null;
+
+		if(t==null)
+		{
+			t=new Test();
+		}
+
+		t.methodOne();
+	}
+	public void methodOne()
+	{
+		System.out.println("MethodOne");
+	}
+}
+
+Optional
+===========
+Optional class introduced in Java 8.
+
+It is a final class which is present in java.util package.
+
+The main objective of Optional class is to handle null checks.
+
+There are three ways to create object for Optional class.
+
+1) By using empty() method 
+-------------------------
+It create an empty Optional.
+ex:
+	Optional<Object> optional=Optional.empty();
+
+
+2) By using of() method 
+------------------------
+It creates Optional with non-null value and throws NullPointerException if value not found.
+ex:
+	Optional<Object> optional=Optional.of();
+
+
+3) By using ofNullable() method 
+---------------------------
+It creates Optional which contains a value or to be empty if value not found.
+ex:
+	Optional<Object> optional=Optional.ofNullable();
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Optional<Object> optional=Optional.empty();
+		System.out.println(optional);//Optional.empty
+	}
+
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ihub";
+
+		Optional<String> optional=Optional.of(str);
+		System.out.println(optional);//Optional[ihub]
+	}
+
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str=null;
+
+		Optional<String> optional=Optional.of(str);
+		System.out.println(optional); // R.E NullPointerException
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ihub";
+
+		Optional<String> optional=Optional.of(str);
+		System.out.println(optional); //Optional[ihub]
+
+		System.out.println(optional.get()); // ihub 
+
+		System.out.println(optional.isPresent());//true 
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ihub";
+
+		Optional<String> optional=Optional.ofNullable(str);
+		System.out.println(optional); //Optional[ihub]
+
+		System.out.println(optional.get()); // ihub 
+
+		System.out.println(optional.isPresent());//true 
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ihub";
+
+		Optional<String> optional=Optional.ofNullable(str);
+
+		System.out.println(optional.orElse("Value is Null")); // ihub
+		
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str=null;
+
+		Optional<String> optional=Optional.ofNullable(str);
+
+		System.out.println(optional.orElse("Value is Null")); // Value is Null
+		
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	int i=10;
+
+	public static void main(String[] args) 
+	{
+		Test t=null;
+
+		Optional<Object> optional=Optional.ofNullable(t);
+
+		if(!optional.isPresent())
+		{
+			t=new Test();
+		}
+
+		System.out.println(t.i);//10
+		
+	}
+}
+
+Stream API
+==========
+Stream API introduced in java 8.
+
+Stream API present in java.util.stream package.
+
+It allows functional-style programming on collections of data(objects).
+
+It is used to process sequence of objects and makes our code more readable and concise.
+
+In short, Stream API is used to perform bulk operations on Collections.
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		//It create mutable list object
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(1);
+		list.add(5);
+		list.add(6);
+		System.out.println(list);
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		//It create immutable list object
+
+		List<Integer> list=List.of(3,4,1,9);
+		System.out.println(list);//[3, 4, 1, 9]
+
+		list.add(10); // R.E UnsupportedOperationException
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		//It create immutable list object
+
+		List<Integer> list=Arrays.asList(3,4,1,9);
+		System.out.println(list);//[3, 4, 1, 9]
+
+		list.add(10); // R.E UnsupportedOperationException
+	}
+}
+
+ex:
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		List<Integer> newList=list.stream().filter(i->i>5).collect(Collectors.toList());
+
+		System.out.println(newList);//[6,9]
+
+	}
+}
+
+ex:
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		List<Integer> newList=list.stream().filter(i->i%2==0).collect(Collectors.toList());
+
+		System.out.println(newList);//[6, 2, 4]
+
+	}
+}
+
+ex;
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		List<Integer> newList=list.stream().map(i->i+10).collect(Collectors.toList());
+
+		System.out.println(newList);//[16, 12, 19, 11, 13, 15, 14]
+
+	}
+}
+
+ex;
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		long odd=list.stream().filter(i->i%2!=0).count();
+
+		System.out.println(odd);//4
+
+	}
+}
+
+ex:
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		List<Integer> newList=list.stream().sorted().collect(Collectors.toList());
+
+		System.out.println(newList);//[1, 2, 3, 4, 5, 6, 9]
+
+	}
+}
+
+ex:
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		List<Integer> newList=list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+
+		System.out.println(newList);//[9, 6, 5, 4, 3, 2, 1]
+
+	}
+}
+
+
+ex:
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		int minimum=list.stream().min((i1,i2)->i1.compareTo(i2)).get();
+
+		System.out.println(minimum);//1
+
+	}
+}
+
+ex:
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		List<Integer> list=List.of(6,2,9,1,3,5,4);
+		
+		int maximum=list.stream().max((i1,i2)->i1.compareTo(i2)).get();
+
+		System.out.println(maximum);//9
+
+	}
+}
+
+ex:
+---
+import java.util.*;
+import java.util.stream.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String[] sarr={"Alan","Jose","Kelvin","Mark"};
+
+		List<String> list=List.of(sarr);
+		
+		List<String> newList=list.stream().filter(i-> i.startsWith("J")).collect(Collectors.toList());
+
+		System.out.println(newList);//9
+
+	}
+}
+
+forEach() method
+=================
+A forEach() method introduced in Java 8.
+
+It is used to iterate the objects/elements from Collections.
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String[] sarr={"Alan","Jose","Kelvin","Mark"};
+
+		List<String> list=List.of(sarr);
+		
+		list.forEach(element -> System.out.print(element+" "));
+
+	}
+}
+
+ex:
+---
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Map<String,Integer> map=Map.of("one",1,"two",2,"three",3);
+		map.forEach((key,value)-> System.out.print(key+"="+value+" "));
+	}
+}
+
+Method Reference(::)
+====================
+Method reference introduced in java 8.
+
+It is a special type of lamda expression.
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String[] sarr={"Alan","Jose","Kelvin","Mark"};
+
+		List<String> list=List.of(sarr);
+		
+		list.forEach(System.out::println);
+
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Map<String,Integer> map=Map.of("one",1,"two",2,"three",3);
+
+		map.forEach(Test::getKeyValue);
+	}
+	public static void getKeyValue(String key,Integer value)
+	{
+		System.out.println(key+"="+value);
+	}
+}
+
+Interview Question
+==================
+Q) Write a java program to display employee records in sorting order of employee id?
+
+
+import java.util.*;
+import java.util.stream.*;
+class Employee 
+{
+	private int empId;
+	private String empName;
+	private double empSal;
+
+	Employee(int empId,String empName,double empSal)
+	{
+		this.empId=empId;
+		this.empName=empName;
+		this.empSal=empSal;
+	}
+	public int getEmpId()
+	{
+		return  empId;
+	}
+	public String getEmpName()
+	{
+		return empName;
+	}
+	public double getEmpSal()
+	{
+		return empSal;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		List<Employee> list=new ArrayList<Employee>();
+		list.add(new Employee(104,"Jack",4000));
+		list.add(new Employee(102,"Brook",2000));
+		list.add(new Employee(103,"Mark",3000));
+		list.add(new Employee(101,"Alan",1000));
+
+		List<Employee> newList=list.stream().sorted(Comparator.comparingInt(Employee::getEmpId)).collect(Collectors.toList());
+
+		newList.forEach(employee -> System.out.println(employee.getEmpId()+" "+employee.getEmpName()+" "+employee.getEmpSal()));
+	}
+}
+
+Q) Write a java program to display employee records in sorting order of employee name?
+
+import java.util.*;
+import java.util.stream.*;
+class Employee 
+{
+	private int empId;
+	private String empName;
+	private double empSal;
+
+	Employee(int empId,String empName,double empSal)
+	{
+		this.empId=empId;
+		this.empName=empName;
+		this.empSal=empSal;
+	}
+	public int getEmpId()
+	{
+		return  empId;
+	}
+	public String getEmpName()
+	{
+		return empName;
+	}
+	public double getEmpSal()
+	{
+		return empSal;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		List<Employee> list=new ArrayList<Employee>();
+		list.add(new Employee(104,"Jack",4000));
+		list.add(new Employee(102,"Brook",2000));
+		list.add(new Employee(103,"Mark",3000));
+		list.add(new Employee(101,"Alan",1000));
+
+		List<Employee> newList=list.stream().sorted(Comparator.comparing(Employee::getEmpName)).collect(Collectors.toList());
+
+		newList.forEach(employee -> System.out.println(employee.getEmpId()+" "+employee.getEmpName()+" "+employee.getEmpSal()));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

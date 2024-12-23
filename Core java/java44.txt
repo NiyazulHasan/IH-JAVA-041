@@ -1,0 +1,512 @@
+Inter-Thread Communication
+===========================
+Two threads can communication by using wait(), notify() and notifyAll() method.
+
+A thread which is waiting for notification has to call wait() method and a thread which is giving notification has to call notify() or notifyAll() method.
+
+A wait(), notify() and notifyAll() methods of Object class but not Thread class.
+
+To invoke wait(), notify() and notifyAll() method compulsory we required synchronized area othewise we will get IllegalStateMonitorException.
+
+A thread which calls wait() method on a current object then it will release the lock of that object immediately and it goes waiting state.
+
+A thread which calls notify() And notifyAll() method on a current object then it will release the lock of that object but not immediately.
+
+Except wait(), notify() and notifyAll() method there is no way to release the lock.
+
+ex:
+---
+class MyThread extends Thread 
+{
+	int total=0;
+
+	public void run()
+	{
+		synchronized(this)
+		{
+			System.out.println("Child started Calculation");
+			
+			for(int i=1;i<=10;i++)
+			{
+				total+=i;
+			}
+
+			System.out.println("Child Giving notification");
+			this.notify();
+		}
+	}
+}
+class Test 
+{
+	public static void main(String[] args)throws InterruptedException 
+	{
+		MyThread t=new MyThread();
+		t.start();
+
+		synchronized(t)
+		{
+			System.out.println("Main method is waiting");
+			t.wait();
+			System.out.println("Main method got notification");
+			System.out.println(t.total);//55
+		}
+	}
+}
+
+DeadLock 
+=========
+Deadlock will occur in a situation where one thread is waiting for object lock which is acquired by another thread and that thread is waiting for object lock is which acquired by first thread. Here both the threads are ready to release lock but nobody will release. This situation is called DeadLock.
+
+Diagram: java44.1
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		final String res1="hi";
+		final String res2="bye";
+
+		//Anonymous inner class
+		Thread t1=new Thread()
+		{
+			public void run()
+			{
+				synchronized(res1)
+				{
+					System.out.println("Thread1: Locking Resource1");
+					synchronized(res2)
+					{
+						System.out.println("Thread1: Locking Resource2");
+					}
+				}
+			}
+		};
+
+		//Anonymous inner class
+		Thread t2=new Thread()
+		{
+			public void run()
+			{
+				synchronized(res2)
+				{
+					System.out.println("Thread2: Locking Resource2");
+					synchronized(res1)
+					{
+						System.out.println("Thread2: Locking Resource1");
+					}
+				}
+			}
+		};
+
+		t1.start();
+		t2.start();
+	}
+}
+
+Q) What are the disadvantages of Multithreading?
+
+	1) Thread starvation 
+	2) DeadLock 
+	3) Debugging 
+
+
+
+
+Java 8 Features
+===============
+
+Functional interface
+=====================
+Interface which contains only one abstract method is called functional interface.
+
+It can have any number of default methods and static methods.
+
+It is also known as Single Abstract Method interface or SAM interface.
+
+The main objective of functional interface to achieve functional programming.
+ex:
+	a=f1()
+	  {
+	  }
+
+	f1(f2(){})
+	{
+	}
+
+@FunctionalInterface annotation is used to use declare functional interface.
+
+@FunctionalInterface annotation is optional to declare.
+
+ex:
+---
+@FunctionalInterface
+interface A
+{
+	public abstract void m1();
+}
+class B implements A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a=new B();
+		a.m1();
+	}
+}
+
+ex:
+---
+@FunctionalInterface
+interface A
+{
+	public abstract void m1();
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		//Anonymous inner class
+		A a=new A()
+		{
+			public void m1()
+			{
+				System.out.println("M1-Method");
+			}
+		};
+		a.m1();
+	}
+}
+
+Lamda Expression
+=================
+Lamda expression introduced in Java 8.
+
+Lamda expression is used to concise(reduce) the code.
+
+Lamda expression consider as method not a class.
+
+We can use lamda expression when we have functional interface.
+
+The main objective of lamda expression is to achieve functional programming.
+
+Lamda expression does not allow name, returntype and modifier.
+
+ex:
+	Java Method 
+	-----------
+	public void m1()
+	{
+		System.out.println("Hello World");	
+	}
+
+	Lamda Expression 
+	---------------
+	()->
+	{
+		System.out.println("Hello World");	
+	};
+
+ex:
+---
+@FunctionalInterface
+interface A
+{
+	public abstract void m1();
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a=()->
+			{
+				System.out.println("M1-Method");
+			};
+		a.m1();
+	}
+}
+
+
+ex:
+---
+@FunctionalInterface
+interface A
+{
+	public abstract void m1(int i,int j);
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a=(int i,int j)->
+			{
+				System.out.println(i+j);
+			};
+		a.m1(10,20);
+	}
+}
+
+ex:
+---
+@FunctionalInterface
+interface A
+{
+	public abstract int m1(int i,int j);
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a=(int i,int j)->
+			{
+				return i+j;
+			};
+		System.out.println(a.m1(20,30));
+	}
+}
+
+Default methods of an interface
+================================
+Default methods in interface introduced in Java 8.
+
+Java provides facility to declare methods in interface and tagged with default keyword are called default methods.
+
+A default method is a non-abstract method.
+
+A default method can be override.
+
+syntax:
+-------
+	default  returntype method_name()
+	{
+		-
+		- //code to be execute 
+		-
+	}
+
+ex:
+---
+@FunctionalInterface
+interface A
+{
+	//abstract method 
+	public abstract void m1();
+
+	//default method
+	default void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class B implements A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a=new B();
+		a.m1();
+		a.m2();
+	}
+}
+
+
+ex:
+---
+@FunctionalInterface
+interface A
+{
+	//abstract method 
+	public abstract void m1();
+
+	//default method
+	default void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class B implements A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+	//override 
+	public void m2()
+	{
+		System.out.println("Override M2-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a=new B();
+		a.m1();
+		a.m2();
+	}
+}
+
+
+We can achieve multiple inheritance in java by using default methods of an interface.
+
+ex:
+---
+interface Right 
+{
+	default void m1()
+	{
+		System.out.println("Right - M1-Method");
+	}
+}
+interface Left 
+{
+	default void m1()
+	{
+		System.out.println("Left - M1-Method");
+	}
+}
+class Middle implements Right,Left 
+{
+	public void m1()
+	{
+		System.out.println("Middle - M1-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Middle m=new Middle();
+		m.m1();
+	}
+}
+
+ex:
+---
+interface Right 
+{
+	default void m1()
+	{
+		System.out.println("Right - M1-Method");
+	}
+}
+interface Left 
+{
+	default void m1()
+	{
+		System.out.println("Left - M1-Method");
+	}
+}
+class Middle implements Right,Left 
+{
+	public void m1()
+	{
+		Right.super.m1();
+		Left.super.m1();
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Middle m=new Middle();
+		m.m1();
+	}
+}
+
+Static methods of an interface
+================================
+Static methods in interface introduced in Java 8.
+
+Java provides facility to declare methods in interface and tagged with static keyword are called static methods.
+
+A static method is a non-abstract method.
+
+A static method can't be override.
+
+ex:
+--
+interface A 
+{
+	static void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		A.m1();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,520 @@
+7) Shift operators
+==================
+
+Right shift operators (>>)
+---------------------------
+10 >> 1 =  10/2
+
+10 >> 2 =  10/4  (10/2*2)
+
+10 >> 3 =  10/8  (10/2*2*2)
+
+10 >> 4 =  10/16 (10/2*2*2*2)
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 20 >> 3;
+
+		System.out.println(i); // 20/8 = 2
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 100 >> 8;
+
+		System.out.println(i); //100/256 = 0 
+	}
+}
+
+
+Left shift operators (<<)
+---------------------------
+10 << 1 =  10*2
+
+10 << 2 =  10*4  (10/2*2)
+
+10 << 3 =  10*8  (10/2*2*2)
+
+10 << 4 =  10*16 (10/2*2*2*2)
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10 << 3;
+
+		System.out.println(i); // 10*8 = 80
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i =  100 << 4;
+
+		System.out.println(i); // 100 * 16 = 1600
+	}
+}
+
+8) Unary operators 
+===================
+
+Increment/Decrement operator(++/--)
+-----------------------------------
+We have two types of increment operators.
+
+1) Post increment 
+	ex:
+		i++;
+
+2) Pre increment 
+	ex:
+		++i;
+
+We have two types of decrement operators.
+
+1) post decrement 
+	ex:
+		i--;
+
+2) pre decrement 
+	ex:
+		--i;
+
+
+POST increment/decrement operator 
+---------------------------------
+Rule1: First Take 
+Rule2: Then Change 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		i++;
+
+		System.out.println(i); //11
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		System.out.println(i++);// 10
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		int j=i++;
+
+		System.out.println(i+" "+j);//11  10
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		int j=i-- + i--; //10 + 9 
+
+		System.out.println(i+" "+j);// 8  19
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		int j=i++ + i++ - i--; //10 + 11 - 12
+
+		System.out.println(i+" "+j);//11   9
+	}
+}
+
+Pre increment/decrement operator
+-------------------------------
+Rule1: First Change 
+Rule2: Then Take 
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		++i;
+
+		System.out.println(i); //11
+	}
+}
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		System.out.println(++i); //11
+	}
+}
+
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		int j=++i;
+
+		System.out.println(i+" "+j); //11 11
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		int j=--i + --i;//9+8
+
+		System.out.println(i+" "+j); //8 17
+	}
+}
+
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		System.out.println(i++ + ++i); // 10  +  12 = 22
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=100;
+
+		100++;
+
+		System.out.println(i); //C.T.E 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+
+		System.out.println(++(i++));//C.T.E 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		byte b=127;
+
+		b++;
+
+		System.out.println(b);//-128
+	}
+}
+
+
+Types of blocks 
+================
+A block is a set of statements which is enclosed in a curly braces i.e {}.
+
+In java, we have three types of blocks.
+
+1) Instance block 
+
+2) Static block 
+
+3) Local block 
+
+
+1) Instance block 
+-----------------
+Instance block is used to initialized the instance members.
+
+Instance block will execute when we create a instance(object) of a class.
+
+Instance block must and should declare immediately after the class.
+
+Instance block does not allow name, returntype and modifier.
+
+Instance block will execute before constructor is invoked.
+
+We can declare instance block as follow.
+
+syntax:
+------
+	//instance block
+	{
+		-
+		- //set of statements
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	//instance block
+	{
+		System.out.println("Instance-Block");
+	}
+	public static void main(String[] args) 
+	{
+		System.out.println("Main-Method");
+	}
+}
+o/p:
+	Main-Method
+
+ex:
+---
+class Test  
+{
+	//instance block
+	{
+		System.out.println("Instance-Block");
+	}
+	public static void main(String[] args) 
+	{
+		System.out.println("Main-Method");
+		Test t=new Test();
+	}
+}
+o/p:
+	Main-Method
+	Instance-Block
+
+ex:
+---
+class Test  
+{
+	//instance block
+	{
+		System.out.println("Instance-Block");
+	}
+	public static void main(String[] args) 
+	{
+		Test t1=new Test();
+		System.out.println("Main-Method");
+		Test t2=new Test();
+	}
+}
+o/p:
+	Instance-Block
+	Main-Method
+	Instance-Block 
+
+ex:
+---
+class Test  
+{
+	//instance variable 
+	int i;
+
+	//instance block
+	{
+		i=100;
+	}
+
+	public static void main(String[] args) 
+	{
+		Test t=new Test();
+		System.out.println(t.i); // 100
+	}
+}
+
+1) Static block 
+-----------------
+Static block is used to initialized the static members.
+
+Static block will execute at the time of classloading.
+
+Static block must and should declare immediately after the class using static keyword.
+
+Static block does not allow name, returntype and modifier.
+
+Static block will execute before constructor and instance block is invoked.
+
+We can declare static block as follow.
+
+syntax:
+------
+	//static block
+	statics
+	{
+		-
+		- //set of statements
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	//static block
+	static
+	{
+		System.out.println("Static-Block");
+	}
+
+	public static void main(String[] args) 
+	{
+		System.out.println("Main-Method");
+	}
+}
+o/p:
+	static-block
+	main-method
+
+ex:
+----
+class Test  
+{
+	//instance block
+	{
+		System.out.println("instance-block");
+	}
+	//static block
+	static
+	{
+		System.out.println("Static-Block");
+	}
+
+	public static void main(String[] args) 
+	{
+		System.out.println("Main-Method");
+		Test t=new Test();
+	}
+}
+o/p:
+	static-block
+	main-method
+	instance-block
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

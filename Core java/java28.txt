@@ -1,0 +1,265 @@
+Q) What is hash code in java?
+
+For every JVM will create a unique identification number i.e hash code.
+
+In order to read the hash code of an object we need to use hashCode() method.
+
+A hashCode() method present in Object class.
+
+Diagram: java28.1
+
+Ex:
+---
+import java.util.Date;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t=new Test();
+		System.out.println(t.hashCode()); //1940030785
+		
+		Date d=new Date();
+		System.out.println(d.hashCode()); //-1130407314
+	}
+}
+
+Q) What is toString() method ?
+
+It is a method present in Object class.
+
+Whenever we are trying to display an object reference directly or indirectly toString() method 
+will be executed.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t=new Test();
+		System.out.println(t); //Test@73a28541
+		System.out.println(t.toString());//Test@73a28541
+		
+		int[] arr=new int[3];
+		System.out.println(arr);// [I@6f75e721	
+	}
+}
+
+Q) What is the difference between class and object?
+
+class						object
+------------					-----------
+To declare a class we will use class keyword.	To declare an object we will use new keyword.
+
+It is a blue print or template of an object.	It is a outcome of a blue print i.e instance.
+
+It is a collection of objects.			It is a collection of properties and behaviours.
+
+It is a logical entity.				It is a physical entity.
+
+It does not allocate memory.			It allocates memory.
+
+It can't manipulate.				It can manipulate.
+
+It is declared once.				It is declared many times.
+
+
+Data Hiding
+============
+It is a programming technique in Java that restricts access to object data from outside the class.
+
+Using "private" modifier we can achieve data hiding.
+
+The main objective of data hiding is to provide security.
+
+
+ex:
+--
+class Account 
+{
+	private double balance=10000d;
+}
+class Student
+{
+	public static void main(String[] args)
+	{
+		Account account=new Account();
+		System.out.println(account.balance);
+	}
+}
+o/p:
+	C.T.E : balance has private access in Account
+
+Note:
+------
+	In order to read private data we need to use setter and getter methods.
+
+
+Abstraction
+============
+Hiding internal implementation and highlighting the set of services is called abstraction.
+
+Using interfaces and abstract classes we can implements abstraction.
+
+The best example of abstraction is GUI ATM machine because bank people will hide internal implementation and highlights the set of services like banking, withdrawl, mini statement and etc.
+
+The main objective of abstraction are
+
+1) It gives security because it hides internal implementation from the outsider.
+
+2) Enhancement becomes more easy because without effecting enduser they can perform any changes in 
+   our internal system.
+
+3) It provides flexibility to the enduser to use the system.
+
+4) It improves maintainability of an application.
+
+Encapsulation
+==============
+The process of encapsulating or grouping variables and it's associate methods in a single entity is calle encapsulation.
+
+The best example of encapsulation is capsule.
+
+Diagram: java28.2
+
+A class is said to be ecapsulated class if it supports data hiding and abstraction.
+
+Abstraction is used to hide the data and Encapsulation is used to protect the data.
+
+In encapsulation, for every variable we need to write setter and getter methods.
+
+Diagram: java28.3
+
+The main advantages of encapsulation are
+
+1) It gives security.
+
+2) Enhancement becomes more easy.
+
+3) It provides flexibility to the enduser to use the system.
+
+4) It improves maintainability of an application.
+
+The main disadvantage of encapsulation is , it will increase the length of our code and slow down the 
+execution process.
+
+ex:
+---
+class Student
+{
+	//current class variables 
+	private int studId;
+	private String studName;
+	private double studFee;
+	
+	//setter methods
+	public void setStudId(int studId)
+	{
+		this.studId=studId;
+	}
+	public void setStudName(String studName)
+	{
+		this.studName=studName;
+	}
+	public void setStudFee(double studFee)
+	{
+		this.studFee=studFee;
+	}
+	
+	//getter methods
+	public int getStudId()
+	{
+		return studId;
+	}
+	public String getStudName()
+	{
+		return studName;
+	}
+	public double getStudFee()
+	{
+		return studFee;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		 Student s=new Student();
+		 s.setStudId(101);
+		 s.setStudName("Alan");
+		 s.setStudFee(1000d);
+		 
+		 System.out.println("Student Id : "+s.getStudId());
+		 System.out.println("Student Name : "+s.getStudName());
+		 System.out.println("Student Fee : "+s.getStudFee());
+	}
+}
+
+
+Q) What is the difference between Abstraction and Encapsulation?
+
+Abstraction 					Encapsulation
+------------					-------------
+Hiding internal implementation and		The process of encapsulating or grouping
+highlighting the set of services is called	variables and its associate methods in a
+abstraction.					single entity is called encapsulation.
+
+It is used to hide the data. 			It is used to protect the data.
+
+Using abstract classes and interfaces we	Using access modifiers we can implements
+can implements abstraction.			encapsulation.
+
+It is a process of gaining the information. 	It is a process of containing the information.
+
+It solves an issue at design level. 		It solves an issue at implementation level.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

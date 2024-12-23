@@ -1,0 +1,200 @@
+Escape Characters / Escape Sequences
+=====================================
+Escape characters are used to design the output in neat and clean manner.
+
+Escape characters start with back slash (\) followed by a character.
+
+ex:
+	\n 
+
+Mostly escape characters are placed inside the output statement.
+
+ex:
+	System.out.println("\n");
+
+We have following list of escape characters in java.
+
+1) \n (New Line)
+
+2) \t (Horizontal Tab)
+
+3) \b (Backspace)
+
+4) \r (Carriage Return)
+
+5) \f (Form Feeding) 
+
+6) \\ (Back Slash) 
+
+7) \" (Double Quote)
+
+8) \' (Single Quote) 
+
+and etc.
+
+1) \n (New Line)
+-----------------
+class Akhil
+{
+	public static void main(String[] args)
+	{
+		System.out.println("IHUB\nTALENT");
+	}
+}
+o/p:
+	IHUB
+	TALENT
+
+
+2) \t (Horizontal Tab)
+---------------------
+class Anapati
+{
+	public static void main(String[] args)
+	{
+		System.out.println("IHUB\tTALENT");
+	}
+}
+o/p:
+	IHUB	TALENT
+
+
+3) \b (Backspace)
+------------------
+class Anil
+{
+	public static void main(String[] args)
+	{
+		System.out.println("IHUBTA\bLENT");
+	}
+}
+o/p:
+	IHUBTLENT
+
+ex:
+---
+class Bharath
+{
+	public static void main(String[] args)
+	{
+		System.out.println("IHUB\b\b\bTALENT");
+	}
+}
+
+o/p:
+	ITALENT
+
+4) \r (Carriage Return)
+-----------------------
+class Bharani
+{
+	public static void main(String[] args)
+	{
+		System.out.println("IHUB\rTALENT");
+	}
+}
+o/p:
+	TALENT
+
+ex:
+----
+class Prabhas
+{
+	public static void main(String[] args)
+	{
+		System.out.println("TALENT\rIHUB");
+	}
+}
+o/p:
+	IHUBNT
+
+6) \\ (Back Slash) 
+-------------------
+class Akshay
+{
+	public static void main(String[] args)
+	{
+		System.out.println("IHUB\\TALENT");
+	}
+}
+
+o/p:
+	IHUB\TALENT
+
+
+C program
+=========
+Q) Write a c program to display %d ? 
+
+void main()
+{
+	clrscr();
+
+	printf("%%d"); // %d 	
+		
+	getch();
+}
+
+7) \" (Double Quote)
+--------------------
+class Sadwika
+{
+	public static void main(String[] args)
+	{
+		System.out.println("I love \"java\" programming");
+	}
+}
+
+o/p:
+	I love "java" programming
+
+
+8) \' (Single Quote)
+--------------------
+class Hema
+{
+	public static void main(String[] args)
+	{
+		System.out.println("I Love 'java' programming ");
+		System.out.println("I Love \'java\' programming ");
+	}
+}
+
+o/p:
+	I Love 'java' programming 
+	I Love 'java' programming 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
